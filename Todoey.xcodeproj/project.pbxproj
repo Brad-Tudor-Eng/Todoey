@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40C6060D228732DB0096FF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C6060C228732DB0096FF81 /* AppDelegate.swift */; };
-		40C6060F228732DB0096FF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C6060E228732DB0096FF81 /* ViewController.swift */; };
+		40C6060F228732DB0096FF81 /* TodoeyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C6060E228732DB0096FF81 /* TodoeyListViewController.swift */; };
 		40C60612228732DB0096FF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C60610228732DB0096FF81 /* Main.storyboard */; };
 		40C60614228732DD0096FF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C60613228732DD0096FF81 /* Assets.xcassets */; };
 		40C60617228732DD0096FF81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C60615228732DD0096FF81 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		40C60609228732DB0096FF81 /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C6060C228732DB0096FF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		40C6060E228732DB0096FF81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		40C6060E228732DB0096FF81 /* TodoeyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoeyListViewController.swift; sourceTree = "<group>"; };
 		40C60611228732DB0096FF81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40C60613228732DD0096FF81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40C60616228732DD0096FF81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +54,46 @@
 		40C6060B228732DB0096FF81 /* Todoey */ = {
 			isa = PBXGroup;
 			children = (
-				40C6060C228732DB0096FF81 /* AppDelegate.swift */,
-				40C6060E228732DB0096FF81 /* ViewController.swift */,
-				40C60610228732DB0096FF81 /* Main.storyboard */,
-				40C60613228732DD0096FF81 /* Assets.xcassets */,
-				40C60615228732DD0096FF81 /* LaunchScreen.storyboard */,
 				40C60618228732DD0096FF81 /* Info.plist */,
+				40C60613228732DD0096FF81 /* Assets.xcassets */,
+				40C60621228734BE0096FF81 /* Support */,
+				40C60620228734B60096FF81 /* Controller */,
+				40C6061F228734AF0096FF81 /* View */,
+				40C6061E2287349A0096FF81 /* Model */,
 			);
 			path = Todoey;
+			sourceTree = "<group>";
+		};
+		40C6061E2287349A0096FF81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		40C6061F228734AF0096FF81 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				40C60615228732DD0096FF81 /* LaunchScreen.storyboard */,
+				40C60610228732DB0096FF81 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		40C60620228734B60096FF81 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				40C6060C228732DB0096FF81 /* AppDelegate.swift */,
+				40C6060E228732DB0096FF81 /* TodoeyListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		40C60621228734BE0096FF81 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40C6060F228732DB0096FF81 /* ViewController.swift in Sources */,
+				40C6060F228732DB0096FF81 /* TodoeyListViewController.swift in Sources */,
 				40C6060D228732DB0096FF81 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
