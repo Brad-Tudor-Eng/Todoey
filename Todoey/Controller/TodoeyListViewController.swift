@@ -10,14 +10,19 @@ import UIKit
 
 class TodoeyListViewController: UITableViewController {
 
-    var itemArray = ["Find Milk", "Eat Tacos", "Destroy Camels"]
+    var itemArray = [Item]()
     var defaults = UserDefaults.standard
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let items = defaults.array(forKey: "ToDoListArray") as? [String] {
+        
+        let newItem = Item()
+        newItem.title = "Destroy Camels"
+        itemArray.append(newItem)
+        
+        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
             itemArray = items
         }
     }
@@ -35,7 +40,10 @@ class TodoeyListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row]
+        cell.textLabel?.text = itemArray[indexPath.row].title
+        
+        cell.accessoryType = itemArray[indexPath.row].checked ? .checkmark : .none
+        
         return cell
     }
     
@@ -46,9 +54,9 @@ class TodoeyListViewController: UITableViewController {
         //print(itemArray[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let cell = tableView.cellForRow(at: indexPath)
+        itemArray[indexPath.row].checked = !itemArray[indexPath.row].checked
         
-        cell?.accessoryType = cell?.accessoryType == .checkmark ? .none : .checkmark
+        self.tableView.reloadData()
     }
 
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -58,8 +66,12 @@ class TodoeyListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Todoey Item", message: "" ,preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            //what will happen when the user clicks add item
-            self.itemArray.append(txtField.text ?? "new item")
+            // what will happen when the user clicks add item
+            let newItem = Item()
+            
+            newItem.title = txtField.text ?? ""
+            
+            self.itemArray.append(newItem)
             
             self.defaults.set(self.itemArray, forKey: "ToDoListArray")
             
