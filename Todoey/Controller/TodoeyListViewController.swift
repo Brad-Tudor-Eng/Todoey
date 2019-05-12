@@ -12,19 +12,30 @@ class TodoeyListViewController: UITableViewController {
 
     var itemArray = [Item]()
     var defaults = UserDefaults.standard
-    
-    
+    var dataFilePath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist"))!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         let newItem = Item()
         newItem.title = "Destroy Camels"
+        
         itemArray.append(newItem)
         
-        if let items = defaults.array(forKey: "ToDoListArray") as? [Item] {
-            itemArray = items
+        loadItems()
+    }
+    
+    func loadItems(){
+        if let data = try? Data(contentsOf: dataFilePath) {
+            let decoder = PropertyListDecoder()
+            do{
+                 itemArray = try decoder.decode([Item].self, from: data)
+            }catch{
+                print("decoder broke \(error)")
+            }
         }
+        
     }
     
     //MARK - TABLE VIEW DATASOURCE METHODS
@@ -73,7 +84,14 @@ class TodoeyListViewController: UITableViewController {
             
             self.itemArray.append(newItem)
             
-            self.defaults.set(self.itemArray, forKey: "ToDoListArray")
+            let encoder = PropertyListEncoder()
+            
+            do{
+                let data = try encoder.encode(self.itemArray)
+                try data.write(to: self.dataFilePath)
+            }catch{
+                print("Error encoding item array \(error)")
+            }
             
             self.tableView.reloadData()
         }
